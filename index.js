@@ -1,4 +1,3 @@
-import entradaDados from 'readline-sync';
-import {exibirTitulo, selecionarFruta, inicilizaJogo} from './funcoes/funcoes.js'
+import { inicializaJogo } from './funcoes/funcoes.js'
 
-inicilizaJogo();
+inicializaJogo();
