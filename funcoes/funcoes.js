@@ -3,7 +3,12 @@ import listaDeFrutas from "../colecao/dados.js";
 
 function selecionarFruta (){
     const indiceAleatorio = Math.floor(Math.random() * listaDeFrutas.length);
-    return listaDeFrutas[indiceAleatorio];
+    let palavraEscolhida = listaDeFrutas[indiceAleatorio];
+    let primeiraLetra = palavraEscolhida[0];
+    let underline = '-'.repeat(palavraEscolhida.length - 1);
+    let palavraOculta = primeiraLetra + underline;
+    
+    return palavraOculta;
 }
 
 function exibirTitulo(){
