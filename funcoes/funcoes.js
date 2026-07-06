@@ -1,20 +1,19 @@
-import listaDeFrutas from "../colecao/colecao.js";
+import listaDeFrutas from "../colecao/dados.js";
 
-
-
-function exibirTitulo(){
-    console.log('-----JOGO DA FORCA-----\n');
-}
 
 function selecionarFruta (){
     const indiceAleatorio = Math.floor(Math.random() * listaDeFrutas.length);
     return listaDeFrutas[indiceAleatorio];
 }
 
+function exibirTitulo(){
+    console.log('------------JOGO DA FORCA------------\n');
+    console.log(`Nome da fruta com ${selecionarFruta().length} letras:`);
+    
+}
 
 function inicilizaJogo (){
     exibirTitulo();
-    console.log(selecionarFruta());
 }
 
 export {exibirTitulo, selecionarFruta, inicilizaJogo};
