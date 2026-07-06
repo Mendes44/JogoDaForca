@@ -30,10 +30,24 @@ function atualizaPalavraOculta (palavraOculta, letraDigitada, palavraEscolhida){
 
 }
 
+
+function validaLetraDigitada (letraDigitada) {
+    if(letraDigitada.length === 1 && letraDigitada.match(/[a-z]/)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function verificaPalavraJaDigitada (letrasDigitadas, letraDigitada){
+    return letrasDigitadas.includes(letraDigitada);
+}
+
 function exibirTitulo(palavraEscolhida, palavraOculta){
     let statusJogo = 'andamento';
     let chances = 4;
     let tentativasErradas = 0;
+    let letrasDigitadas = [];
 
     console.log('------------JOGO DA FORCA------------\n');
     console.log(`Nome da fruta com ${palavraEscolhida.length} letras:`);
@@ -47,10 +61,17 @@ function exibirTitulo(palavraEscolhida, palavraOculta){
         const letraDigitada = entradaDados.question("Digite uma letra: ").toLocaleLowerCase();
         
         if(!validaLetraDigitada(letraDigitada)){
-            console.log('DIGITE SOMENTE UMA LETRA VALIDA!!!');
+            console.log('DIGITE SOMENTE UMA LETRA VALIDA DE A-Z SEM NUMEROS OU SEGUENCIA DE LETRAS!!!');
             continue;
         }
-        
+
+        if(verificaPalavraJaDigitada(letrasDigitadas, letraDigitada)){
+            console.log('VOCE JA DIGITOU ESSA LETRA!!!');
+            continue;
+        }
+
+        letrasDigitadas.push(letraDigitada);
+
         if(palavraEscolhida.includes(letraDigitada)){
             palavraOculta = atualizaPalavraOculta(palavraOculta, letraDigitada, palavraEscolhida);
             console.log('BOA!!! A letra digitada existe na palavra!');
@@ -76,15 +97,6 @@ function exibirTitulo(palavraEscolhida, palavraOculta){
         }
     }
 }
-
-function validaLetraDigitada (letraDigitada) {
-    if(letraDigitada.length === 1 && letraDigitada.match(/[a-z]/)){
-        return true;
-    }else{
-        return false;
-    }
-}
-
 
 
 function inicializaJogo (){
